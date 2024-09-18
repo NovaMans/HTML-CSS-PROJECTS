@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Website</title>
+    <link rel="stylesheet" href="turtorial.css">
+    
+  </head>
+
+  <body>
+    <button onclick="
+      finalresult();
+      ">
+      rock
+    </button>
+    <button onclick=" 
+      finalresult();
+    ">
+      paper
+    </button>
+    <button  onclick="
+      finalresult();
+      
+    ">
+      scissors
+    </button>
+
+
+
+
+
+    <script>
+      function computerMoveFunc (){
+        const computer = Math.random();
+
+        let computerMove = '';
+        
+
+        let result = '';
+
+        if (computer >= 0 && computer < 1/3 ){
+          computerMove = 'rock1';
+        }
+        if (computer >= 1/3 && computer < 2/3 ){
+          computerMove = 'scissors1';
+        }
+        if (computer >= 2/3 && computer < 1 ){
+          computerMove = 'paper1';
+        }
+        return computerMove
+      }
+
+      const wins_and_losses = {
+        rock : {
+          rock1: "Draws",
+          scissors1 : "Wins",
+          paper1 :"Loses",
+        },
+        Paper : {
+          rock1 : "Wins",
+          scissors1 : "Loses",
+          paper1 : "Draws",
+        },
+        Scissors : {
+          rock1 : "Loses",
+          scissors1 : "Draws",
+          paper1 : "Wins",
+        },
+      };
+
+      let score = JSON.parse(localStorage.getItem
+      ('score')) || {
+        Wins: 0,
+        Loses:0,
+         Draws:0,
+
+      };
+      
+     
+        
+
+
+      function finalresult(){
+        result = wins_and_losses.Scissors[computerMoveFunc()]
+        score[result] += 1;
+        console.log(score)
+        localStorage.setItem('score', JSON.stringify(score));
+      }
+
+      
+
+
+      
+
+      
+    </script>
+    
+
+  </body>
+</html>
